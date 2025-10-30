@@ -1,4 +1,42 @@
 {
+  "users": [
+    {
+      "id": "f95a",
+      "username": "tff",
+      "fullName": "Telefonul Fara Fir",
+      "email": "oompi222@gmail.ro",
+      "phone": null,
+      "password": "cwadecw",
+      "birthday": "January 1, 2024"
+    },
+    {
+      "id": "d4ca",
+      "username": "tff",
+      "fullName": "Telefonul Fara Fir",
+      "email": "oompi222@gmail.ro",
+      "phone": null,
+      "password": "cuweicwecbwe",
+      "birthday": "January 4, 1999"
+    },
+    {
+      "id": "6c31",
+      "username": "tff",
+      "fullName": "Telefonul Fara Fir",
+      "email": "oompi222@gmail.ro",
+      "phone": null,
+      "password": "111111111111111111",
+      "birthday": "February 3, 2021"
+    },
+    {
+      "id": "ba22",
+      "username": "bumti",
+      "fullName": "miau miaumiau",
+      "email": null,
+      "phone": "0712345678",
+      "password": "miaumiau",
+      "birthday": "January 3, 1999"
+    }
+  ],
   "suggestions": [
     {
       "id": "1",
