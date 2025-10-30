@@ -1,0 +1,120 @@
+{
+  "suggestions": [
+    {
+      "id": "1",
+      "user": "test1",
+      "motive": "someone + 5 more",
+      "img": "https://randomuser.me/api/portraits/women/99.jpg"
+    },
+    {
+      "id": "2",
+      "user": "test2",
+      "motive": "someone_else + 2 more",
+      "img": "https://randomuser.me/api/portraits/women/23.jpg"
+    },
+    {
+      "id": "3",
+      "user": "test3",
+      "motive": "someone + 37 more",
+      "img": "https://randomuser.me/api/portraits/women/60.jpg"
+    },
+    {
+      "id": "4",
+      "user": "test4",
+      "motive": "followers: test2",
+      "img": "https://randomuser.me/api/portraits/men/99.jpg"
+    },
+    {
+      "id": "5",
+      "user": "test5",
+      "motive": "test8 + 5 more",
+      "img": "https://randomuser.me/api/portraits/men/70.jpg"
+    }
+  ],
+  "stories": [
+    {
+      "id": "1",
+      "user": "alexandraa",
+      "img": "https://randomuser.me/api/portraits/women/61.jpg",
+      "viewed": true,
+      "storyURL": "https://cdn.pixabay.com/photo/2014/07/31/21/56/silo-406957_1280.jpg"
+    },
+    {
+      "id": "2",
+      "user": "juulblu",
+      "img": "https://randomuser.me/api/portraits/men/4.jpg",
+      "viewed": true,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/57e0dc434f51aa14f1dc8460962e33791c3ad6e04e50744172287edd964bcc_640.jpg"
+    },
+    {
+      "id": "3",
+      "user": "miau",
+      "img": "https://randomuser.me/api/portraits/women/8.jpg",
+      "viewed": true,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/54e6d4474f50a814f1dc8460962e33791c3ad6e04e5074417c2c7fd59e48c3_640.jpg"
+    },
+    {
+      "id": "4",
+      "user": "koraalina",
+      "img": "https://randomuser.me/api/portraits/women/16.jpg",
+      "viewed": false,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/52e5d7434253a814f1dc8460962e33791c3ad6e04e507440742a7ad2974bc1_640.jpg"
+    },
+    {
+      "id": "5",
+      "user": "testronic",
+      "img": "https://randomuser.me/api/portraits/women/15.jpg",
+      "viewed": false,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/51e3d2444a4faa0df7c5d57bc32f3e7b1d3ac3e45658704f722c7cd391_640.jpg"
+    },
+    {
+      "id": "6",
+      "user": "namedcollin",
+      "img": "https://randomuser.me/api/portraits/men/15.jpg",
+      "viewed": false,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/57e7d54b4b51a514f1dc8460962e33791c3ad6e04e507441722978d69f48c6_640.jpg"
+    },
+    {
+      "id": "7",
+      "user": "user_x",
+      "img": "https://randomuser.me/api/portraits/men/18.jpg",
+      "viewed": false,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/54e6d4464a52ac14f1dc8460962e33791c3ad6e04e507441722978d69f48c6_640.jpg"
+    },
+    {
+      "id": "8",
+      "user": "useryyy",
+      "img": "https://randomuser.me/api/portraits/women/22.jpg",
+      "viewed": false,
+      "storyURL": "https://randomwordgenerator.com/img/picture-generator/57e8d1404856ad14f1dc8460962e33791c3ad6e04e50744172297cdc924cc3_640.jpg"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "user": "simoneashleyworld",
+      "userAvatar": "https://randomuser.me/api/portraits/women/62.jpg",
+      "location": "Bridgerton Set",
+      "likes": 58241,
+      "caption": "Netflix confirmed that Bridgerton Season 4 will be released in two parts. Part 1 arrives on January 29, 2026, and Part 2...",
+      "mediaUrls": [
+        "https://picsum.photos/seed/bridgerton1/600/600",
+        "https://picsum.photos/seed/bridgerton2/600/600",
+        "https://picsum.photos/seed/bridgerton3/600/600"
+      ],
+      "commentsCount": 41
+    },
+    {
+      "id": "2",
+      "user": "traveler_ro",
+      "userAvatar": "https://randomuser.me/api/portraits/men/55.jpg",
+      "location": "Bucuresti, Romania",
+      "likes": 1200,
+      "caption": "Vedere superbă asupra centrului vechi. Orașul meu iubit! 🇷🇴 #romania",
+      "mediaUrls": [
+        "https://picsum.photos/seed/bucharest1/800/600"
+      ],
+      "commentsCount": 15
+    }
+  ]
+}
