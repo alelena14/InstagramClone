@@ -6,7 +6,7 @@
       "fullName": "Telefonul Fara Fir",
       "email": "oompi222@gmail.ro",
       "phone": null,
-      "password": "cwadecw",
+      "password": "111",
       "birthday": "January 1, 2024"
     },
     {
@@ -35,6 +35,15 @@
       "phone": "0712345678",
       "password": "miaumiau",
       "birthday": "January 3, 1999"
+    },
+    {
+      "id": "7099",
+      "username": "test1",
+      "fullName": "ceva",
+      "email": null,
+      "phone": "0788888888",
+      "password": "parola",
+      "birthday": "January 6, 2000"
     }
   ],
   "suggestions": [

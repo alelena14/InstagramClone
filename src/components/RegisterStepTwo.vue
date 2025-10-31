@@ -1,85 +1,94 @@
 <template>
-  <div class="flex flex-col left-auto items-center justify-center p-3">
-    <div
-      class="flex flex-col w-[350px] p-10 gap-2 items-center text-center justify-center border border-[#363636]"
-    >
-      <div class="items-center">
-        <img src="../../birthday.png" alt="logo" class="w-32" />
-      </div>
-      <h2 class="text-white text-s font-semibold mb-2">Add Your Birthday</h2>
-      <p class="text-white/60 text-sm mb-4">
-        This won't be a part of your public profile.
-        <a href="https://help.instagram.com/155833707900388" class="text-[#6383f6]" target="_blank">
-          Why do I need to provide my birthday?
-        </a>
-      </p>
-
-      <!-- Birthday selectors -->
-      <div class="flex gap-2 justify-center mb-2">
-        <select v-model="month" class="selectInput">
-          <option disabled value="">Month</option>
-          <option v-for="m in months" :key="m" :value="m">{{ m }}</option>
-        </select>
-
-        <select v-model="day" class="selectInput">
-          <option disabled value="">Day</option>
-          <option v-for="d in days" :key="d" :value="d">{{ d }}</option>
-        </select>
-
-        <select v-model="year" class="selectInput">
-          <option disabled value="">Year</option>
-          <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
-        </select>
-      </div>
-
-      <span class="text-xs text-white/65 mt-2">You need to enter the date you were born</span>
-      <span class="mt-2 text-xs text-white/65">
-        Use your own birthday, even if this account is for a business, a pet, or something else.
-      </span>
-
-      <button
-        @click="handleFinish"
-        class="bg-[#4a5df9] w-[240px] mt-4 text-white font-semibold py-1 px-6 rounded-lg hover:bg-[#4150f7]"
+  <div class="">
+    <div class="flex flex-col left-auto items-center justify-center p-3">
+      <div
+        class="flex flex-col w-[350px] p-10 gap-2 items-center text-center justify-center border border-[#363636]"
       >
-        Next
-      </button>
+        <div class="items-center">
+          <img src="../../birthday.png" alt="logo" class="w-32" />
+        </div>
+        <h2 class="text-white text-s font-semibold mb-2">Add Your Birthday</h2>
+        <p class="text-white/60 text-sm mb-4">
+          This won't be a part of your public profile.
+          <a
+            href="https://help.instagram.com/155833707900388"
+            class="text-[#6383f6]"
+            target="_blank"
+          >
+            Why do I need to provide my birthday?
+          </a>
+        </p>
 
-      <button
-        @click="emit('back')"
-        class="bg-transparent text-[#4a5df9] font-semibold py-1 px-6 rounded-lg cursor-pointer hover:text-[#6383f6]"
-      >
-        Go Back
-      </button>
+        <!-- Birthday selectors -->
+        <div class="flex gap-2 justify-center mb-2">
+          <select v-model="month" class="selectInput">
+            <option disabled value="">Month</option>
+            <option v-for="m in months" :key="m" :value="m">{{ m }}</option>
+          </select>
 
-      <span class="mt-8 text-xs text-white/65 space-x-1">
-        You can also
-        <a
-          href="https://help.instagram.com/contact/406206379945942/"
-          class="text-[#6383f6]"
-          target="_blank"
+          <select v-model="day" class="selectInput">
+            <option disabled value="">Day</option>
+            <option v-for="d in days" :key="d" :value="d">{{ d }}</option>
+          </select>
+
+          <select v-model="year" class="selectInput">
+            <option disabled value="">Year</option>
+            <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
+          </select>
+        </div>
+
+        <span class="text-xs text-white/65 mt-2">You need to enter the date you were born</span>
+        <span class="mt-2 text-xs text-white/65">
+          Use your own birthday, even if this account is for a business, a pet, or something else.
+        </span>
+
+        <button
+          @click="handleFinish"
+          class="bg-[#4a5df9] w-[240px] mt-4 text-white font-semibold py-1 px-6 rounded-lg hover:bg-[#4150f7]"
         >
-          report content you believe is unlawful
-        </a>
-        in your country without logging in.
-      </span>
-    </div>
+          Next
+        </button>
 
-    <!-- Login redirect -->
-    <div
-      class="flex flex-col mt-3 w-24 h-12 items-center text-center justify-center border border-[#363636] bg-black p-10 w-[350px]"
-    >
-      <p class="text-white text-12">Have an account?</p>
-      <a
-        href="/login"
-        class="text-[#6383f6] font-semibold hover:underline hover:underline-offset-2"
+        <button
+          @click="emit('back')"
+          class="bg-transparent text-[#4a5df9] font-semibold py-1 px-6 rounded-lg cursor-pointer hover:text-[#6383f6]"
+        >
+          Go Back
+        </button>
+
+        <span class="mt-8 text-xs text-white/65 space-x-1">
+          You can also
+          <a
+            href="https://help.instagram.com/contact/406206379945942/"
+            class="text-[#6383f6]"
+            target="_blank"
+          >
+            report content you believe is unlawful
+          </a>
+          in your country without logging in.
+        </span>
+      </div>
+
+      <!-- Login redirect -->
+      <div
+        class="flex flex-col mt-3 w-24 h-12 items-center text-center justify-center border border-[#363636] bg-black p-10 w-[350px]"
       >
-        Log in
-      </a>
+        <p class="text-white text-12">Have an account?</p>
+        <a
+          href="/login"
+          class="text-[#6383f6] font-semibold hover:underline hover:underline-offset-2"
+        >
+          Log in
+        </a>
+      </div>
     </div>
+    <InstagramFooter />
   </div>
 </template>
 
 <script setup>
+import InstagramFooter from '@/components/LoginSignupFooter.vue'
+
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 const emit = defineEmits(['back'])
@@ -140,7 +149,6 @@ const handleFinish = async () => {
     if (!res.ok) throw new Error('Failed to register')
 
     const savedUser = await res.json()
-    console.log('Account created:', savedUser)
 
     sessionStorage.setItem('userId', savedUser.id)
 
