@@ -4,7 +4,7 @@
       "id": "f95a",
       "username": "tff",
       "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.ro",
+      "email": "oompi222@gmail.com",
       "phone": null,
       "password": "111",
       "birthday": "January 1, 2024"
@@ -13,7 +13,7 @@
       "id": "d4ca",
       "username": "tff",
       "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.ro",
+      "email": "oompi222@gmail.com",
       "phone": null,
       "password": "cuweicwecbwe",
       "birthday": "January 4, 1999"
@@ -22,7 +22,7 @@
       "id": "6c31",
       "username": "tff",
       "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.ro",
+      "email": "oompi222@gmail.com",
       "phone": null,
       "password": "111111111111111111",
       "birthday": "February 3, 2021"
@@ -158,9 +158,7 @@
       "location": "Bucuresti, Romania",
       "likes": 1200,
       "caption": "Vedere superbă asupra centrului vechi. Orașul meu iubit! 🇷🇴 #romania",
-      "mediaUrls": [
-        "https://picsum.photos/seed/bucharest1/800/600"
-      ],
+      "mediaUrls": ["https://picsum.photos/seed/bucharest1/800/600"],
       "commentsCount": 15
     }
   ]
