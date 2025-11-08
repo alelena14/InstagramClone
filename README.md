@@ -28,9 +28,9 @@ The main goal of this app was to **learn and practice Vue.js fundamentals**, suc
 ✅ Smooth navigation between stories (next / previous)  
 ✅ **Main Feed** displaying user posts, captions, likes  
 ✅ Responsive and modern design built with Tailwind CSS  
-✅ Dynamic routing between main feed, story viewer, and profile
-✅ Profile viewing and editing
-✅ Mock backend powered by `json-server`
+✅ Dynamic routing between main feed, story viewer, and profile  
+✅ Profile viewing and editing  
+✅ Mock backend powered by `json-server`  
 
 ---
 
