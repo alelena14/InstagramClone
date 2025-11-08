@@ -10,7 +10,7 @@
           <img src="../../InstagramLogo.png" alt="logo" class="w-44" />
         </div>
 
-        <!-- 🧾 Login form -->
+        <!-- Login form -->
         <form @submit.prevent="handleLogin" class="flex flex-col text-white">
           <input
             v-model="identifier"
@@ -76,10 +76,12 @@
 </template>
 
 <script setup>
-import InstagramFooter from '@/components/LoginSignupFooter.vue'
+import InstagramFooter from '@/components/Footer.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
 
+const auth = useAuthStore()
 const router = useRouter()
 const identifier = ref('')
 const password = ref('')
@@ -88,8 +90,8 @@ const API_URL = 'http://localhost:3000/users'
 
 async function handleLogin() {
   const value = identifier.value.trim()
-  const isEmail = value.includes('@')
-  const isPhone = /^[0-9]+$/.test(value)
+  const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+  const isPhone = /^07\d{8}$/.test(value)
 
   try {
     const res = await fetch(API_URL)
@@ -111,7 +113,7 @@ async function handleLogin() {
     }
 
     loginStatus.value = 1
-    sessionStorage.setItem('userId', user.id)
+    auth.setUser(user)
 
     router.push('/')
   } catch (err) {

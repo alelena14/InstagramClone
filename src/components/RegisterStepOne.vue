@@ -20,6 +20,9 @@
             placeholder="Mobile Number or Email"
             required
           />
+          <p v-if="identifierError" class="text-red-500 text-xs mt-1 text-left">
+            {{ identifierError }}
+          </p>
           <input
             v-model="fullName"
             type="text"
@@ -33,8 +36,12 @@
             type="password"
             class="formInput"
             placeholder="Password"
+            @input="validatePassword"
             required
           />
+          <p v-if="passwordError" class="text-red-500 text-xs mt-1 text-left">
+            {{ passwordError }}
+          </p>
         </form>
 
         <div class="text-xs text-white/65 space-x-1">
@@ -112,25 +119,37 @@
 </template>
 
 <script setup>
-import InstagramFooter from '@/components/LoginSignupFooter.vue'
-
+import InstagramFooter from '@/components/Footer.vue'
 import { ref } from 'vue'
 
 const emit = defineEmits(['next'])
 
 const identifier = ref('')
+var identifierError = ref('')
 const username = ref('')
 const fullName = ref('')
 const password = ref('')
+var passwordError = ref('')
 
 const handleNext = () => {
   const value = identifier.value.trim()
-  const isEmail = value.includes('@')
-  const isPhone = /^[0-9]+$/.test(value)
+  const isEmail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)
+  const isPhone = /^07\d{8}$/.test(value)
+  const isValidPassword = /^(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(password.value)
+
+  if (!isValidPassword) {
+    passwordError.value =
+      'Password must be at least 8 characters, contain one uppercase letter and one special character.'
+    return
+  } else {
+    passwordError.value = ''
+  }
 
   if (!isEmail && !isPhone) {
-    alert('Please enter a valid email or phone number.')
+    identifierError.value = 'Please enter a valid email or phone number.'
     return
+  } else {
+    identifierError.value = ''
   }
 
   const data = {

@@ -87,12 +87,13 @@
 </template>
 
 <script setup>
-import InstagramFooter from '@/components/LoginSignupFooter.vue'
-
+import InstagramFooter from '@/components/Footer.vue'
+import { useAuthStore } from '@/stores/authStore'
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 const emit = defineEmits(['back'])
 
+const auth = useAuthStore()
 const router = useRouter()
 const props = defineProps({
   userData: {
@@ -137,7 +138,15 @@ const handleFinish = async () => {
   }
 
   const formattedBirthday = `${month.value} ${day.value}, ${year.value}`
-  const user = { ...props.userData, birthday: formattedBirthday }
+  const user = {
+    ...props.userData,
+    birthday: formattedBirthday,
+    profilePicture: 'https://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg',
+    bio: '',
+    gender: '',
+    showThreads: false,
+    showSuggestions: false,
+  }
 
   try {
     const res = await fetch('http://localhost:3000/users', {
@@ -150,7 +159,7 @@ const handleFinish = async () => {
 
     const savedUser = await res.json()
 
-    sessionStorage.setItem('userId', savedUser.id)
+    auth.setUser(savedUser)
 
     router.push('/')
   } catch (err) {

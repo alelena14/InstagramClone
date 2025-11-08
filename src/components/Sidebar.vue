@@ -5,7 +5,9 @@
     </div>
 
     <ul class="space-y-2 flex flex-col pt-2">
-      <li class="navbar-button"><img src="../../HomeLogo.png" alt="HomeLogo" class="w-6" />Home</li>
+      <li class="navbar-button" @click="goToHome()">
+        <img src="../../HomeLogo.png" alt="HomeLogo" class="w-6" />Home
+      </li>
       <li class="navbar-button">
         <img src="../../SearchLogo.png" alt="SearchLogo" class="w-6" />Search
       </li>
@@ -22,13 +24,33 @@
       <li class="navbar-button">
         <img src="../../CreateLogo.png" alt="CreateLogo" class="w-6" />Create
       </li>
-      <li class="navbar-button">
-        <img src="../../ProfilePic.png" alt="ProfilePic" class="w-6" />Profile
+      <li class="navbar-button" @click="showProfile()">
+        <img
+          :src="auth.currentUser.profilePicture"
+          alt="ProfilePic"
+          class="w-6 rounded-full"
+        />Profile
       </li>
     </ul>
 
     <ul class="space-y-2 flex flex-col pt-20">
-      <li class="navbar-button"><img src="../../MoreLogo.png" alt="MoreLogo" class="w-6" />More</li>
+      <div
+        v-show="showMenu"
+        class="absolute w-[270px] h-[55px] bottom-full items-start mb-2 left-4 top-[75vh] bg-[#222] text-white text-sm rounded-xl px-2 py-2"
+      >
+        <p
+          class="cursor-pointer mb-4 pb-3 pt-2 px-3 rounded-xl font-normal hover:bg-[#333]"
+          @click.stop="handleLogout"
+        >
+          Log out
+        </p>
+      </div>
+
+      <li class="navbar-button relative" ref="moreButton" @click="toggleMenu">
+        <img src="../../MoreLogo.png" alt="MoreLogo" class="w-6 inline-block mr-2" />
+        More
+      </li>
+
       <li class="navbar-button">
         <img src="../../MetaLogo.png" alt="MetaLogo" class="w-6" />From Meta
       </li>
@@ -36,12 +58,46 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
+
+const auth = useAuthStore()
+const showMenu = ref(false)
+const moreButton = ref(null)
+const router = useRouter()
+
+const goToHome = () => {
+  router.push('/')
+}
+
+const showProfile = () => {
+  router.push(`/profile`)
+}
+
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value
+}
+
+const handleLogout = () => {
+  auth.clearUser()
+  router.push('/login')
+}
+
+function handleClickOutside(event) {
+  if (moreButton.value && !moreButton.value.contains(event.target)) {
+    showMenu.value = false
+  }
+}
+
+onMounted(() => document.addEventListener('click', handleClickOutside))
+onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
+</script>
 
 <style scoped>
 .navbar-button {
   display: flex;
-  text-align: center;
   padding: 0.7rem;
   border-color: transparent;
   border-radius: 0.5rem;
