@@ -3,6 +3,9 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router/index'
+import { createI18n } from 'vue-i18n'
+import en from './locales/en.json'
+import ro from './locales/ro.json'
 
 const app = createApp(App)
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -33,8 +36,18 @@ library.add(
   faEllipsisH,
 )
 
-app.use(createPinia())
+const i18n = createI18n({
+  legacy: false,
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages: {
+    en,
+    ro,
+  },
+})
 
+app.use(createPinia())
+app.use(i18n)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(router)

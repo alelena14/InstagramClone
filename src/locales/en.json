@@ -1,0 +1,86 @@
+{
+  "register": {
+    "title": "Sign up to see photos and videos from your friends.",
+    "emailOrPhone": "Mobile Number or Email",
+    "fullName": "Full Name",
+    "username": "Username",
+    "password": "Password",
+    "next": "Next",
+    "terms": {
+      "info1": "People who use our service may have uploaded your contact information to Instagram.",
+      "learnMore": "Learn More",
+      "info2": "By signing up, you agree to our",
+      "terms": "Terms",
+      "privacyPolicy": "Privacy Policy",
+      "cookiesPolicy": "Cookies Policy",
+      "dataInfo": "Learn how we collect, use and share your data in our",
+      "cookiesInfo": "use of cookies and similar technology in our"
+    },
+    "report1": "You can also",
+    "report2": " report content you believe is unlawful ",
+    "report3": "in your country without logging in.",
+    "haveAccount": "Have an account?",
+    "login": "Log in",
+    "birthday": {
+      "title": "Add Your Birthday",
+      "subtitle": "This won't be a part of your public profile.",
+      "why": "Why do I need to provide my birthday?",
+      "disclaimer1": "You need to enter the date you were born.",
+      "disclaimer2": "Use your own birthday, even if this account is for a business, pet, or something else.",
+      "back": "Go Back",
+      "month": "Month",
+      "day": "Day",
+      "year": "Year",
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    }
+  },
+
+  "login": {
+    "title": "Log in to see photos and videos from your friends.",
+    "emailOrUsername": "Phone number, username, or email",
+    "password": "Password",
+    "button": "Log in",
+    "forgot": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "signup": "Sign up",
+    "report1": "You can also",
+    "report2": " report content you believe is unlawful ",
+    "report3": "in your country without logging in.",
+    "noAccountFound": "No account found with that email, phone number, or username.",
+    "incorrectPassword": "Sorry, your password was incorrect. Please double-check your password."
+  },
+
+  "footer": {
+    "links": {
+      "meta": "Meta",
+      "about": "About",
+      "blog": "Blog",
+      "jobs": "Jobs",
+      "help": "Help",
+      "api": "API",
+      "privacy": "Privacy",
+      "cookies": "Cookie Settings",
+      "terms": "Terms",
+      "locations": "Locations",
+      "lite": "Instagram Lite",
+      "metaAI": "Meta AI",
+      "metaAIArticles": "Meta AI Articles",
+      "threads": "Threads",
+      "contactUpload": "Contact Uploading & Non-Users",
+      "verified": "Meta Verified"
+    },
+    "language": "English",
+    "copyright": "© 2025 Instagram from Meta"
+  }
+}

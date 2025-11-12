@@ -8,7 +8,7 @@
           <img src="../../InstagramLogo.png" alt="logo" class="w-40" />
         </div>
         <p class="text-white/65 bold items-center justify-center">
-          Sign up to see photos and videos from your friends.
+          {{ t('register.title') }}
         </p>
 
         <!-- Register Form -->
@@ -17,7 +17,7 @@
             v-model="identifier"
             type="text"
             class="formInput"
-            placeholder="Mobile Number or Email"
+            :placeholder="t('register.emailOrPhone')"
             required
           />
           <p v-if="identifierError" class="text-red-500 text-xs mt-1 text-left">
@@ -27,15 +27,21 @@
             v-model="fullName"
             type="text"
             class="formInput"
-            placeholder="Full Name"
+            :placeholder="t('register.fullName')"
             required
           />
-          <input v-model="username" type="text" class="formInput" placeholder="Username" required />
+          <input
+            v-model="username"
+            type="text"
+            class="formInput"
+            :placeholder="t('register.username')"
+            required
+          />
           <input
             v-model="password"
             type="password"
             class="formInput"
-            placeholder="Password"
+            :placeholder="t('register.password')"
             @input="validatePassword"
             required
           />
@@ -46,37 +52,37 @@
 
         <div class="text-xs text-white/65 space-x-1">
           <span>
-            People who use our service may have uploaded your contact information to Instagram.
+            {{ t('register.terms.info1') }}
           </span>
           <a
             href="https://www.facebook.com/help/instagram/261704639352628"
             class="text-[#6383f6]"
             target="_blank"
-            >Learn More</a
+            >{{ t('register.terms.learnMore') }}</a
           >
         </div>
         <div class="mt-4 text-xs text-white/65 space-x-1">
           <span>
-            By signing up, you agree to our
+            {{ t('register.terms.info2') }}
             <a
               href="https://www.facebook.com/legal/terms/plain_text_terms"
               class="text-[#6383f6] hover:underline hover:underline-offset-2"
               target="_blank"
-              >Terms</a
+              >{{ t('register.terms.terms') }}</a
             >
-            Learn how we collect, use and share your data in our
+            {{ t('register.terms.dataInfo') }}
             <a
               href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0"
               class="text-[#6383f6] hover:underline hover:underline-offset-2"
               target="_blank"
-              >Privacy Policy</a
+              >{{ t('register.terms.privacyPolicy') }}</a
             >
-            and how we use cookies and similar technology in our
+            {{ t('register.terms.cookiesInfo') }}
             <a
               href="https://www.facebook.com/legal/cookies/"
               class="text-[#6383f6] hover:underline hover:underline-offset-2"
               target="_blank"
-              >Cookies Policy</a
+              >{{ t('register.terms.cookiesPolicy') }}</a
             >.
           </span>
         </div>
@@ -85,19 +91,19 @@
           @click="handleNext"
           class="bg-[#4a5df9] w-[240px] mt-2 text-white text-10 font-semibold py-1 px-6 rounded-lg hover:bg-[#4150f7] cursor-pointer"
         >
-          Next
+          {{ t('register.next') }}
         </button>
 
         <div class="mt-8 text-xs text-white/65 space-x-1">
           <span>
-            You can also
+            {{ t('register.report1') }}
             <a
               href="https://help.instagram.com/contact/406206379945942/"
               class="text-[#6383f6] hover:underline hover:underline-offset-2"
               target="_blank"
-              >report content you believe is unlawful
+              >{{ t('register.report2') }}
             </a>
-            in your country without logging in.
+            {{ t('register.report3') }}
           </span>
         </div>
       </div>
@@ -106,11 +112,11 @@
       <div
         class="flex flex-col mt-3 w-24 h-12 items-center text-center justify-center border border-[#363636] bg-black p-10 w-[350px]"
       >
-        <p class="text-white text-12">Have an account?</p>
+        <p class="text-white text-12">{{ t('register.haveAccount') }}</p>
         <a
           href="/login"
           class="text-[#6383f6] font-semibold hover:underline hover:underline-offset-2"
-          >Log in</a
+          >{{ t('register.login') }}</a
         >
       </div>
     </div>
@@ -121,7 +127,9 @@
 <script setup>
 import InstagramFooter from '@/components/Footer.vue'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const emit = defineEmits(['next'])
 
 const identifier = ref('')

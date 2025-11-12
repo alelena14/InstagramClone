@@ -7,65 +7,65 @@
         <div class="items-center">
           <img src="../../birthday.png" alt="logo" class="w-32" />
         </div>
-        <h2 class="text-white text-s font-semibold mb-2">Add Your Birthday</h2>
+        <h2 class="text-white text-s font-semibold mb-2">{{ t('register.birthday.title') }}</h2>
         <p class="text-white/60 text-sm mb-4">
-          This won't be a part of your public profile.
+          {{ t('register.birthday.subtitle') }}
           <a
             href="https://help.instagram.com/155833707900388"
             class="text-[#6383f6]"
             target="_blank"
           >
-            Why do I need to provide my birthday?
+            {{ t('register.birthday.why') }}
           </a>
         </p>
 
         <!-- Birthday selectors -->
         <div class="flex gap-2 justify-center mb-2">
           <select v-model="month" class="selectInput">
-            <option disabled value="">Month</option>
-            <option v-for="m in months" :key="m" :value="m">{{ m }}</option>
+            <option disabled value="">{{ t('register.birthday.month') }}</option>
+            <option v-for="m in months" :key="m.text" :value="m.text">{{ m.text }}</option>
           </select>
 
           <select v-model="day" class="selectInput">
-            <option disabled value="">Day</option>
+            <option disabled value="">{{ t('register.birthday.day') }}</option>
             <option v-for="d in days" :key="d" :value="d">{{ d }}</option>
           </select>
 
           <select v-model="year" class="selectInput">
-            <option disabled value="">Year</option>
+            <option disabled value="">{{ t('register.birthday.year') }}</option>
             <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
           </select>
         </div>
 
-        <span class="text-xs text-white/65 mt-2">You need to enter the date you were born</span>
+        <span class="text-xs text-white/65 mt-2">{{ t('register.birthday.disclaimer1') }}</span>
         <span class="mt-2 text-xs text-white/65">
-          Use your own birthday, even if this account is for a business, a pet, or something else.
+          {{ t('register.birthday.disclaimer2') }}
         </span>
 
         <button
           @click="handleFinish"
           class="bg-[#4a5df9] w-[240px] mt-4 text-white font-semibold py-1 px-6 rounded-lg hover:bg-[#4150f7]"
         >
-          Next
+          {{ t('register.next') }}
         </button>
 
         <button
           @click="emit('back')"
           class="bg-transparent text-[#4a5df9] font-semibold py-1 px-6 rounded-lg cursor-pointer hover:text-[#6383f6]"
         >
-          Go Back
+          {{ t('register.birthday.back') }}
         </button>
 
         <span class="mt-8 text-xs text-white/65 space-x-1">
-          You can also
+          {{ t('register.report1') }}
           <a
             href="https://help.instagram.com/contact/406206379945942/"
             class="text-[#6383f6]"
             target="_blank"
           >
-            report content you believe is unlawful
+            {{ t('register.report2') }}
           </a>
-          in your country without logging in.
+          {{ t('register.report3') }}
         </span>
       </div>
 
@@ -73,12 +73,12 @@
       <div
         class="flex flex-col mt-3 w-24 h-12 items-center text-center justify-center border border-[#363636] bg-black p-10 w-[350px]"
       >
-        <p class="text-white text-12">Have an account?</p>
+        <p class="text-white text-12">{{ t('register.haveAccount') }}</p>
         <a
           href="/login"
           class="text-[#6383f6] font-semibold hover:underline hover:underline-offset-2"
         >
-          Log in
+          {{ t('register.login') }}
         </a>
       </div>
     </div>
@@ -91,6 +91,9 @@ import InstagramFooter from '@/components/Footer.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const emit = defineEmits(['back'])
 
 const auth = useAuthStore()
@@ -103,31 +106,32 @@ const props = defineProps({
 })
 
 // Dropdown data
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
+const months = computed(() => [
+  { text: t('register.birthday.january') },
+  { text: t('register.birthday.february') },
+  { text: t('register.birthday.march') },
+  { text: t('register.birthday.april') },
+  { text: t('register.birthday.may') },
+  { text: t('register.birthday.june') },
+  { text: t('register.birthday.july') },
+  { text: t('register.birthday.august') },
+  { text: t('register.birthday.september') },
+  { text: t('register.birthday.october') },
+  { text: t('register.birthday.november') },
+  { text: t('register.birthday.december') },
+])
+
 const month = ref('')
 const day = ref('')
 const year = ref('')
 
-// day and year lists
 const days = computed(() => {
-  const monthIndex = months.indexOf(month.value)
+  const monthIndex = months.value.findIndex((m) => m.text === month.value)
   const yearNum = parseInt(year.value)
   const daysInMonth = new Date(yearNum || 2024, monthIndex + 1, 0).getDate()
   return Array.from({ length: daysInMonth }, (_, i) => i + 1)
 })
+
 const currentYear = new Date().getFullYear()
 const years = computed(() => Array.from({ length: 100 }, (_, i) => currentYear - i))
 

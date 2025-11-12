@@ -1,0 +1,87 @@
+{
+  "register": {
+    "title": "Înregistrează-te pentru a vedea fotografii și videoclipuri de la prietenii tăi.",
+    "emailOrPhone": "Număr de telefon sau email",
+    "fullName": "Nume complet",
+    "username": "Nume de utilizator",
+    "password": "Parolă",
+    "next": "Următorul",
+    "terms": {
+      "info1": "Persoanele care folosesc serviciul nostru ar fi putut să încarce informațiile tale de contact pe Instagram.",
+      "learnMore": "Află mai multe",
+      "info2": "Prin înscriere, ești de acord cu",
+      "terms": "Termenii și condițiile",
+      "privacyPolicy": "Politica de confidențialitate",
+      "cookiesPolicy": "Politica privind cookie-urile",
+      "dataInfo": "Află cum colectăm, folosim și partajăm datele tale în",
+      "cookiesInfo": "utilizarea cookie-urilor și a tehnologiilor similare în"
+    },
+    "report1": "De asemenea",
+    "report2": " poți raporta conținutul pe care îl consideri ilegal ",
+    "report3": "în țara ta fără a te conecta.",
+    "haveAccount": "Ai deja un cont?",
+    "login": "Conectează-te",
+    "birthday": {
+      "title": "Adaugă data nașterii tale",
+      "subtitle": "Aceasta nu va fi afișată pe profilul tău public.",
+      "why": "De ce trebuie să ofer data nașterii?",
+      "disclaimer1": "Trebuie să introduci data la care te-ai născut.",
+      "disclaimer2": "Folosește data ta reală de naștere, chiar dacă acest cont este pentru o afacere, un animal de companie sau altceva.",
+      "button": "Următorul",
+      "back": "Înapoi",
+      "month": "Lună",
+      "day": "Zi",
+      "year": "An",
+      "january": "Ianuarie",
+      "february": "Februarie",
+      "march": "Martie",
+      "april": "Aprilie",
+      "may": "Mai",
+      "june": "Iunie",
+      "july": "Iulie",
+      "august": "August",
+      "september": "Septembrie",
+      "october": "Octombrie",
+      "november": "Noiembrie",
+      "december": "Decembrie"
+    }
+  },
+
+  "login": {
+    "title": "Conectează-te pentru a vedea fotografii și videoclipuri de la prietenii tăi.",
+    "emailOrUsername": "Număr de telefon, nume de utilizator sau email",
+    "password": "Parolă",
+    "button": "Conectează-te",
+    "forgot": "Ai uitat parola?",
+    "noAccount": "Nu ai un cont?",
+    "signup": "Creează unul",
+    "report1": "De asemenea",
+    "report2": " poți raporta conținutul pe care îl consideri ilegal ",
+    "report3": "în țara ta fără a te conecta.",
+    "noAccountFound": "Nu a fost găsit niciun cont cu acest email, număr de telefon sau nume de utilizator.",
+    "incorrectPassword": "Ne pare rău, parola introdusă este incorectă. Te rugăm să verifici din nou parola."
+  },
+
+  "footer": {
+    "links": {
+      "meta": "Meta",
+      "about": "Despre",
+      "blog": "Blog",
+      "jobs": "Locuri de muncă",
+      "help": "Ajutor",
+      "api": "API",
+      "privacy": "Confidențialitate",
+      "cookies": "Setări cookie",
+      "terms": "Termeni",
+      "locations": "Locații",
+      "lite": "Instagram Lite",
+      "metaAI": "Meta AI",
+      "metaAIArticles": "Articole Meta AI",
+      "threads": "Threads",
+      "contactUpload": "Încărcarea contactelor și non-utilizatorii",
+      "verified": "Meta Verificat"
+    },
+    "language": "Română",
+    "copyright": "© 2025 Instagram de la Meta"
+  }
+}

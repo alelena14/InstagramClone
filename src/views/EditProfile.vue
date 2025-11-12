@@ -155,10 +155,10 @@
         <!-- SAVE BUTTON -->
         <button
           @click="saveChanges"
-          :disabled="!isDirty"
+          :disabled="!isModified"
           class="py-3 px-24 my-6 ml-auto text-white text-sm font-bold rounded-lg transition"
           :class="
-            isDirty
+            isModified
               ? 'bg-[#4a5df9] hover:bg-[#4150f7] cursor-pointer'
               : 'bg-[#18208b] cursor-not-allowed'
           "
@@ -185,13 +185,13 @@ const showDropdown = ref(false)
 const selectedGender = ref('')
 const previewImage = ref('')
 const saveMessage = ref('')
-const isDirty = ref(false)
+const isModified = ref(false)
 
 watch([bio, showThreads, selectedGender, previewImage], () => {
-  isDirty.value = true
+  isModified.value = true
 })
 
-const options = ['Female', 'Male', 'Custom', 'Prefer not to say']
+const options = ['Female', 'Male', 'Other', 'Prefer not to say']
 
 const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
 
@@ -217,12 +217,12 @@ onMounted(async () => {
   selectedGender.value = auth.currentUser?.gender || ''
   showThreads.value = auth.currentUser?.showThreads || false
   previewImage.value = auth.currentUser?.profilePicture || ''
-  isDirty.value = false
+  isModified.value = false
 })
 
 const saveChanges = async () => {
   if (!auth.currentUser?.id) return
-  isDirty.value = false
+  isModified.value = false
 
   const updatedUser = {
     ...auth.currentUser,

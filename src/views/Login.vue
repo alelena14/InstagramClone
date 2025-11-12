@@ -16,14 +16,14 @@
             v-model="identifier"
             type="text"
             class="formInput"
-            placeholder="Phone number, username, or email"
+            :placeholder="t('login.emailOrUsername')"
             required
           />
           <input
             v-model="password"
             type="password"
             class="formInput"
-            placeholder="Password"
+            :placeholder="t('login.password')"
             required
           />
 
@@ -31,41 +31,43 @@
             type="submit"
             class="bg-[#4a5df9] w-[270px] mt-2 text-white text-10 font-semibold py-1 px-6 rounded-lg hover:bg-[#4150f7] cursor-pointer"
           >
-            Log in
+            {{ t('login.button') }}
           </button>
         </form>
 
         <div v-if="loginStatus === 0" class="text-red-400 text-[14px] mt-3">
-          No account found with that email, phone number, or username.
+          {{ t('login.noAccountFound') }}
         </div>
 
         <div v-else-if="loginStatus === -1" class="text-red-400 text-[14px] mt-3">
-          Sorry, your password was incorrect. Please double-check your password.
+          {{ t('login.incorrectPassword') }}
         </div>
 
         <div class="mt-8 text-[14px] font-medium items-center text-white">
           <span class="cursor-pointer hover:underline hover:underline-offset-1">
-            Forgot password?
+            {{ t('login.forgot') }}
           </span>
         </div>
 
         <div class="mt-8 text-xs text-white/65 space-x-1">
           <span>
-            You can also
+            {{ t('login.report1') }}
             <a
               href="https://help.instagram.com/contact/406206379945942/"
               class="text-[#6383f6] hover:underline hover:underline-offset-2"
               target="_blank"
-              >report content you believe is unlawful
+              >{{ t('login.report2') }}
             </a>
-            in your country without logging in.
+            {{ t('login.report3') }}
           </span>
         </div>
 
         <div class="flex flex-col text-white pt-12">
           <span class="text-[14px]">
-            Don't have an account?
-            <a href="/register" class="text-[#6383f6] text-[14px] font-semibold">Sign up</a>
+            {{ t('login.noAccount') }}
+            <a href="/register" class="text-[#6383f6] text-[14px] font-semibold">{{
+              t('login.signup')
+            }}</a>
           </span>
         </div>
       </div>
@@ -80,6 +82,9 @@ import InstagramFooter from '@/components/Footer.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const auth = useAuthStore()
 const router = useRouter()
