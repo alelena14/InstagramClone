@@ -26,10 +26,11 @@ The main goal of this app was to **learn and practice Vue.js fundamentals**, suc
 ✅ Story list similar to Instagram stories  
 ✅ Fullscreen story viewer with progress bar and transitions  
 ✅ Smooth navigation between stories (next / previous)  
-✅ **Main Feed** displaying user posts, captions, likes, and comments  
+✅ **Main Feed** displaying user posts, captions, likes  
 ✅ Responsive and modern design built with Tailwind CSS  
-✅ Dynamic routing between main feed and story viewer  
-✅ Mock backend powered by `json-server`
+✅ Dynamic routing between main feed, story viewer, and profile  
+✅ Profile viewing and editing  
+✅ Mock backend powered by `json-server`  
 
 ---
 
