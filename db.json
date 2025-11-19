@@ -1,79 +1,6 @@
 {
   "users": [
     {
-      "id": "f95a",
-      "username": "tff",
-      "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.com",
-      "phone": null,
-      "password": "111",
-      "birthday": "January 1, 2024",
-      "profilePicture": "http://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg",
-      "bio": ""
-    },
-    {
-      "id": "d4ca",
-      "username": "tff",
-      "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.com",
-      "phone": null,
-      "password": "cuweicwecbwe",
-      "birthday": "January 4, 1999",
-      "profilePicture": "http://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg",
-      "bio": ""
-    },
-    {
-      "id": "6c31",
-      "username": "tff",
-      "fullName": "Telefonul Fara Fir",
-      "email": "oompi222@gmail.com",
-      "phone": null,
-      "password": "111111111111111111",
-      "birthday": "February 3, 2021",
-      "profilePicture": "http://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg",
-      "bio": ""
-    },
-    {
-      "id": "ba22",
-      "username": "bumti",
-      "fullName": "miau miaumiau",
-      "email": null,
-      "phone": "0712345678",
-      "password": "miaumiau",
-      "birthday": "January 3, 1999",
-      "profilePicture": "http://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg",
-      "bio": ""
-    },
-    {
-      "id": "7099",
-      "username": "test1",
-      "fullName": "ceva",
-      "email": null,
-      "phone": "0788888888",
-      "password": "parola",
-      "birthday": "January 6, 2000",
-      "profilePicture": "http://i.pinimg.com/736x/2c/47/d5/2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg",
-      "bio": ""
-    },
-    {
-      "id": "8b0a",
-      "username": "username",
-      "fullName": "fullname",
-      "email": null,
-      "phone": "0777777777",
-      "password": "Validpassword#12",
-      "birthday": "February 2, 1973"
-    },
-    {
-      "id": "d0ab",
-      "username": "asasas",
-      "fullName": "aaaaaaaaaaaa",
-      "email": null,
-      "phone": "0777777777",
-      "password": "cevaTest##-test",
-      "birthday": "July 25, 2002"
-    },
-    {
       "id": "0b04",
       "username": "testest",
       "fullName": "testest",
@@ -213,9 +140,7 @@
       "location": "Bucuresti, Romania",
       "likes": 1200,
       "caption": "Vedere superbă asupra centrului vechi. Orașul meu iubit! 🇷🇴 #romania",
-      "mediaUrls": [
-        "https://picsum.photos/seed/bucharest1/800/600"
-      ],
+      "mediaUrls": ["https://picsum.photos/seed/bucharest1/800/600"],
       "commentsCount": 15
     }
   ]

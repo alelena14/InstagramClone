@@ -21,9 +21,10 @@
       <li class="navbar-button">
         <img src="../../NotificationsLogo.png" alt="NotificationsLogo" class="w-6" />Notifications
       </li>
-      <li class="navbar-button">
+      <li class="navbar-button" @click="showCreateModal = true">
         <img src="../../CreateLogo.png" alt="CreateLogo" class="w-6" />Create
       </li>
+
       <li class="navbar-button" @click="showProfile()">
         <img
           :src="auth.currentUser.profilePicture"
@@ -33,6 +34,7 @@
       </li>
     </ul>
 
+    <NewPost v-if="showCreateModal" @close="showCreateModal = false" />
     <ul class="space-y-2 flex flex-col pt-20">
       <div
         v-show="showMenu"
@@ -62,6 +64,9 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import NewPost from '@/components/NewPost.vue'
+
+const showCreateModal = ref(false)
 
 const auth = useAuthStore()
 const showMenu = ref(false)
