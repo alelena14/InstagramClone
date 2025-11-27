@@ -4,50 +4,55 @@
       <Sidebar />
     </div>
 
-    <div class="flex flex-col ml-[300px] pt-12 items-center">
-      <div class="justify-center items-center">
-        <div class="flex space-x-8 px-6">
-          <img
-            alt="ProfilePic"
-            class="w-36 h-36 rounded-full"
-            :src="auth.currentUser.profilePicture"
-          />
-          <div class="flex flex-col">
-            <h2 class="text-2xl font-light font-medium">{{ auth.currentUser.username }}</h2>
-            <span class="text-xs py-2">{{ auth.currentUser.fullName }}</span>
-            <div class="text-sm gap-4 space-x-4">
-              <span><span class="font-medium">0</span> posts</span>
-              <span><span class="font-medium">500</span> followers</span>
-              <span><span class="font-medium">400</span> following</span>
+    <div class="flex flex-col pt-12 items-center w-full pl-[300px]">
+      <div class="justify-center items-center max-w-[1000px] w-full mx-auto">
+        <div class="justify-center items-center max-w-[700px] pb-8 mx-auto">
+          <div class="flex space-x-8 px-6">
+            <img
+              alt="ProfilePic"
+              class="w-36 h-36 rounded-full"
+              :src="auth.currentUser.profilePicture"
+            />
+            <div class="flex flex-col">
+              <h2 class="text-2xl font-light font-medium">{{ auth.currentUser.username }}</h2>
+              <span class="text-xs py-2">{{ auth.currentUser.fullName }}</span>
+              <div class="text-sm gap-4 space-x-4">
+                <span><span class="font-medium">0</span> posts</span>
+                <span><span class="font-medium">500</span> followers</span>
+                <span><span class="font-medium">400</span> following</span>
+              </div>
+              <span class="text-sm pt-2">{{ auth.currentUser.bio }}</span>
             </div>
-            <span class="text-sm pt-2">{{ auth.currentUser.bio }}</span>
           </div>
-        </div>
-        <div class="flex justify-evenly gap-3 p-6">
-          <button
-            class="bg-[#25292e] text-sm font-medium px-28 py-3 rounded-xl cursor-pointer"
-            @click="goToEdit()"
-          >
-            Edit profile
-          </button>
-          <button class="bg-[#25292e] text-sm font-medium px-28 py-3 rounded-xl">
-            View archive
-          </button>
-        </div>
-        <div class="flex flex-col items-center justify-center space-y-2">
-          <div
-            class="flex p-0.5 rounded-full border-3 border-[#363636] w-22 h-22 items-center justify-center cursor-pointer"
-          >
+          <div class="flex justify-evenly gap-3 p-6">
             <button
-              class="relative flex items-center justify-center w-20 h-20 rounded-full border-2 border-black bg-[#121212] text-[#737373]"
+              class="bg-[#25292e] text-sm font-medium px-28 py-3 rounded-xl cursor-pointer"
+              @click="goToEdit()"
             >
-              <span class="text-[56px] pb-2">+</span>
+              Edit profile
+            </button>
+            <button class="bg-[#25292e] text-sm font-medium px-28 py-3 rounded-xl">
+              View archive
             </button>
           </div>
-          <span class="text-xs font-medium">New</span>
+          <div class="flex flex-col items-center justify-center space-y-2">
+            <div
+              class="flex p-0.5 rounded-full border-3 border-[#363636] w-22 h-22 items-center justify-center cursor-pointer"
+            >
+              <button
+                class="relative flex items-center justify-center w-20 h-20 rounded-full border-2 border-black bg-[#121212] text-[#737373]"
+              >
+                <span class="text-[56px] pb-2">+</span>
+              </button>
+            </div>
+            <span class="text-xs font-medium">New</span>
+          </div>
         </div>
-
-        <div class="flex flex-col items-center justify-center py-20 text-center text-white">
+        <!-- Posts -->
+        <div
+          v-if="posts.length == 0"
+          class="flex flex-col items-center justify-center py-20 text-center text-white"
+        >
           <div class="flex items-center justify-center w-16 h-16">
             <img src="../../CameraLogo.png" alt="" />
           </div>
@@ -61,6 +66,19 @@
           >
             Share your first photo
           </button>
+        </div>
+
+        <div
+          v-if="posts.length > 0"
+          class="grid grid-cols-4 gap-0.5 items-center justify-center text-center text-white"
+        >
+          <div v-for="post in posts" :key="post.id">
+            <img
+              :src="post.mediaUrl[0]"
+              alt="Post image"
+              class="w-[270px] h-[380px] object-cover"
+            />
+          </div>
         </div>
       </div>
       <Footer />
@@ -77,12 +95,28 @@ import { useRouter } from 'vue-router'
 
 const auth = useAuthStore()
 const router = useRouter()
+const posts = ref([])
 
 onMounted(async () => {
   if (!auth.currentUser) {
     await auth.fetchUserFromSession()
   }
+  fetchPosts()
 })
+
+const fetchPosts = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/posts')
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const data = await response.json()
+    posts.value = data.filter((post) => post.userId === auth.currentUser.id)
+    console.log(auth.currentUser.id)
+  } catch (error) {
+    console.error('Error fetching users:', error)
+  }
+}
 
 const goToEdit = () => {
   router.push('profile/edit')

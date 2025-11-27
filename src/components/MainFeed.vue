@@ -7,34 +7,81 @@
     <div v-else class="mt-4">
       <PostCard v-for="post in posts" :key="post.id" :post-data="post" />
     </div>
+
+    <!-- Trigger pentru Intersection Observer -->
+    <div ref="loadMoreTrigger" class="h-10"></div>
+
+    <div v-if="isLoadingMore" class="flex justify-center items-center py-6">
+      <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import PostCard from './PostCard.vue'
 
 const posts = ref([])
 const isLoading = ref(true)
+const isLoadingMore = ref(false)
+
+const page = ref(1)
+const limit = 10
+const hasMore = ref(true)
+
+const loadMoreTrigger = ref(null)
+let observer = null
+
 const API_URL = 'http://localhost:3000/posts'
 
 const fetchPosts = async () => {
-  isLoading.value = true
   try {
-    const response = await fetch(API_URL)
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
+    const response = await fetch(
+      `${API_URL}?_sort=createdAt&_order=desc&_page=${page.value}&_limit=${limit}`,
+    )
+
     const data = await response.json()
-    posts.value = data
+
+    if (data.length < limit) {
+      hasMore.value = false
+    }
+
+    posts.value.push(...data)
   } catch (error) {
     console.error('Error fetching posts:', error)
-  } finally {
-    isLoading.value = false
   }
 }
 
-onMounted(() => {
-  fetchPosts()
+const loadMore = async () => {
+  if (isLoadingMore.value || !hasMore.value) return
+
+  isLoadingMore.value = true
+  page.value += 1
+
+  await fetchPosts()
+
+  isLoadingMore.value = false
+}
+
+onMounted(async () => {
+  await fetchPosts()
+  isLoading.value = false
+
+  // setup IntersectionObserver
+  observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      loadMore()
+    }
+  })
+
+  if (loadMoreTrigger.value) {
+    observer.observe(loadMoreTrigger.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (observer && loadMoreTrigger.value) {
+    observer.unobserve(loadMoreTrigger.value)
+  }
 })
 </script>

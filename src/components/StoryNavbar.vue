@@ -57,7 +57,6 @@ const fetchStories = async () => {
 
 onMounted(() => {
   fetchStories()
-  console.log('StoryNavbar mounted, fetching stories...')
 })
 </script>
 
