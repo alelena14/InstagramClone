@@ -47,7 +47,14 @@
           <div
             class="w-full text-center bg-black border-b border-[#363636] py-2 font-semibold text-white items-center justify-between flex"
           >
-            <button class="text-2xl pl-4 cursor-pointer" @click="goToSelect()">
+            <button
+              class="text-2xl pl-4 cursor-pointer"
+              @click="
+                askConfirm('Discard post?', 'If you leave, your edits will not be saved.', () =>
+                  setStep('select'),
+                )
+              "
+            >
               <svg
                 class="w-5 h-5 text-white"
                 fill="none"
@@ -59,7 +66,10 @@
               </svg>
             </button>
             <span>Crop</span>
-            <button class="text-blue-300 font-medium text-sm pr-4" @click="goToCreate()">
+            <button
+              class="text-blue-300 font-medium text-sm pr-4"
+              @click="setStep('create new post')"
+            >
               Next
             </button>
           </div>
@@ -89,7 +99,11 @@
                 <button
                   v-if="currentIndex == index"
                   class="absolute flex top-1 right-1 text-white bg-black/75 w-5 h-5 justify-center items-center rounded-full cursor-pointer"
-                  @click.stop="deletePhoto(currentIndex)"
+                  @click.stop="
+                    askConfirm('Discard photo?', 'This will remove the photo from your post.', () =>
+                      deletePhoto(currentIndex),
+                    )
+                  "
                 >
                   <span class="h-5 font-thin text-[24px] -translate-y-[50%]">&times;</span>
                 </button>
@@ -128,7 +142,7 @@
           <div
             class="w-full text-center bg-black border-b border-[#363636] py-2 font-semibold text-white items-center justify-between flex"
           >
-            <button class="text-2xl pl-4 cursor-pointer" @click="goToCrop()">
+            <button class="text-2xl pl-4 cursor-pointer" @click="setStep('crop')">
               <svg
                 class="w-5 h-5 text-white"
                 fill="none"
@@ -225,6 +239,25 @@
         </div>
       </div>
     </div>
+    <!-- CONFIRM MODAL -->
+    <div
+      v-if="showConfirm"
+      class="fixed inset-0 flex items-center justify-center bg-black/60 z-[999]"
+    >
+      <div class="bg-[#262626] rounded-4xl text-white w-[580px] h-auto shadow-lg -mt-[280px]">
+        <p class="text-center text-[20px] text-bold pt-6">{{ confirmTitle }}</p>
+        <p class="text-center mt-1 mb-6 text-[#a5a698] font-light text-base">
+          {{ confirmMessage }}
+        </p>
+
+        <div class="flex flex-col justify-between">
+          <button class="px-4 py-3 text-[#ed4956] font-bold cursor-pointer" @click="confirmYes">
+            Discard
+          </button>
+          <button class="px-4 py-3 text-white cursor-pointer" @click="confirmNo">Cancel</button>
+        </div>
+      </div>
+    </div>
   </teleport>
 </template>
 
@@ -244,6 +277,26 @@ const location = ref('')
 const likes = ref(0)
 const commentsCount = ref(0)
 const emit = defineEmits(['close'])
+const showConfirm = ref(false)
+const confirmTitle = ref('')
+const confirmMessage = ref('')
+let confirmCallback = null
+
+const askConfirm = (title, message, callback) => {
+  confirmTitle.value = title
+  confirmMessage.value = message
+  confirmCallback = callback
+  showConfirm.value = true
+}
+
+const confirmYes = () => {
+  if (confirmCallback) confirmCallback()
+  showConfirm.value = false
+}
+
+const confirmNo = () => {
+  showConfirm.value = false
+}
 
 const onFileSelected = (e) => {
   const file = e.target.files[0]
@@ -305,16 +358,8 @@ const deletePhoto = (index) => {
   previewImg.value = images.value[currentIndex.value]
 }
 
-const goToSelect = () => {
-  step.value = 'select'
-}
-
-const goToCrop = () => {
-  step.value = 'crop'
-}
-
-const goToCreate = () => {
-  step.value = 'create new post'
+const setStep = (value) => {
+  step.value = value
 }
 
 const nextImage = () => {

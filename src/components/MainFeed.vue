@@ -37,16 +37,16 @@ const API_URL = 'http://localhost:3000/posts'
 const fetchPosts = async () => {
   try {
     const response = await fetch(
-      `${API_URL}?_sort=createdAt&_order=desc&_page=${page.value}&_limit=${limit}`,
+      `${API_URL}?_sort=-createdAt&_page=${page.value}&_per_page=${limit}`,
     )
 
     const data = await response.json()
 
-    if (data.length < limit) {
+    if (data.data.length < limit) {
       hasMore.value = false
     }
 
-    posts.value.push(...data)
+    posts.value.push(...data.data)
   } catch (error) {
     console.error('Error fetching posts:', error)
   }
