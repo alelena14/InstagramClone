@@ -79,7 +79,7 @@ It’s not meant to be a full Instagram clone, but rather a personal exercise in
 
 ## 💡 Future Improvements
  
-- Ability to add new stories or posts  
+- Ability to add new stories 
 - Story/Posts comments and emoji reactions  
 - Improved animations and transitions  
 
